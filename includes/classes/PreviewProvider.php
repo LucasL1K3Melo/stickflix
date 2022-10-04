@@ -2,16 +2,63 @@
 
 class PreviewProvider {
     
-    private $con;
-    private $username;
+    private $con, $username;
 
     public function __construct($con, $username){
         $this->con = $con;
-        $this->con = $username;
+        $this->username = $username;
     }
 
-    public function createPreviewVideo(){
-        echo "Hello preview!";
+    public function createPreviewVideo($entity){
+        
+        if($entity == null){
+            $entity = $this->getRandomEntity();
+        }
+
+        //$name = $entity->getName();
+        //var_dump($name);
+
+        $id = $entity->getId();
+        $name = $entity->getName();
+        $preview = $entity->getPreview();
+        $thumbnail = $entity->getThumbnail();
+
+        // TODO: ADD SUBTITLE.
+
+        return "<div class='previewContainer'>
+                    <img src='$thumbnail' class='previewImage' hidden>
+                    
+                    <video autoplay muted class='previewVideo' onended='previewEnded()'>
+                        <source src='$preview' type='video/mp4'>
+                    </video>
+
+                    <div class='previewOverlay'> 
+
+                        <div class='mainDetails'>
+                            <h3>$name</h3>
+
+                            <div class='buttons'>
+                                <button> <i class='fa-solid fa-play'></i> Play</button>
+                                <button onclick='volumeToggle(this)'> <i class='fa-solid fa-volume-xmark'></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>";
+    
+    }
+
+    private function getRandomEntity(){
+        
+        $query = $this->con->prepare("SELECT * FROM entities ORDER BY RAND() LIMIT 1");
+        $query->execute();
+
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+        
+        
+        return new Entity($this->con, $row);
+
     }
 
 }
