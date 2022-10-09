@@ -17,12 +17,40 @@ class CategoryContainers {
         $html = "<div class='previewCategories'>";
 
         while($row = $query->fetch(PDO::FETCH_ASSOC)){
-            $html .= $row["name"];
+            $html .= $this->getCategoryHtml($row, null, true, true);
         }
 
         return $html . "</div>";
     }
 
+    private function getCategoryHtml($sqlData, $title, $tvShows, $movies){
+        
+        $categoryId = $sqlData["id"];
+        $title = $title == null ? $sqlData["name"] : $title;
+
+        if ($tvShows && $movies){
+            $entities = EntityProvider::getEntities($this->con, $categoryId, 30);
+        
+        }elseif ($tvShows){
+            // get Tv Shows Entities;
+        } else {
+            // Get movies Entities;
+        }
+        // -! End -!
+
+        if (sizeof($entities) == 0){
+            return;
+        }
+
+        $entitiesHtml = "";
+        $previewProvider = new PreviewProvider($this->con, $this->username);
+        foreach ($entities as $entity) {
+             $entitiesHtml .= $previewProvider->createEntityPreviewSquare($entity);
+        }
+
+
+        return $entitiesHtml . "<br>";
+    }
 }
 
 ?>

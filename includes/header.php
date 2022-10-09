@@ -4,6 +4,7 @@
     require_once("./includes/classes/PreviewProvider.php");
     require_once("./includes/classes/CategoryContainers.php");
     require_once("./includes/classes/Entity.php");
+    require_once("./includes/classes/EntityProvider.php");
 
 
     // Verify if the user have an account and is logged 
