@@ -8,6 +8,7 @@
     require_once("./includes/classes/ErrorMessage.php");
     require_once("./includes/classes/SeasonProvider.php");
     require_once("./includes/classes/Season.php");
+    require_once("./includes/classes/Video.php");
 
 
     // Verify if the user have an account and is logged 
