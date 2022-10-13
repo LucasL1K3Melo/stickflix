@@ -34,21 +34,7 @@
         <div class="wrapper">
 
         <!-- Scripts Area -->
-        <script>
-            function volumeToggle(button){
-                let muted = $(".previewVideo").prop("muted");
-                $(".previewVideo").prop("muted", !muted);
-            
-                $(button).find("i").toggleClass("fa-volume-xmark");
-                $(button).find("i").toggleClass("fa-volume-high");
-            }
-            
-            function previewEnded(){
-                $(".previewVideo").toggle();
-                $(".previewImage").toggle();
-            }
-
-        </script>
+        <script src="assets/js/scripts.js"></script>
         <!-- Script End ./ -->
 
         <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

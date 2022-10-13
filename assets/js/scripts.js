@@ -1,4 +1,5 @@
-function volumeToggle(button){
+function volumeToggle(button)
+{
     let muted = $(".previewVideo").prop("muted");
     $(".previewVideo").prop("muted", !muted);
 
@@ -6,7 +7,32 @@ function volumeToggle(button){
     $(button).find("i").toggleClass("fa-volume-high");
 }
 
-function previewEnded(){
+function previewEnded()
+{
     $(".previewVideo").toggle();
     $(".previewImage").toggle();
+}
+
+function goBack()
+{
+    window.history.back();
+}
+
+function startHideTimer()
+{
+    let timeout = null;
+
+    $(document).on("mousemove", function(){
+        clearTimeout(timeout);
+
+        $(".watchNav").fadeIn();
+
+        timeout = setTimeout(function(){
+            $(".watchNav").fadeOut();
+        }, 2000);
+    });
+}
+
+function initVideo() {
+    startHideTimer();
 }
