@@ -33,6 +33,20 @@ function startHideTimer()
     });
 }
 
-function initVideo() {
+function initVideo(videoId, username) {
+    
     startHideTimer();
+    upgradeProgressTimer(videoId, username);
+
+}
+
+function upgradeProgressTimer(videoId, username) {
+    addDuration(videoId, username);
+}
+
+function addDuration(videoId, username)
+{
+    $.post("ajax/addDuration.php", { videoId: videoId, username: username }, function(data){
+        alert(data);
+    });
 }
