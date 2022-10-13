@@ -2,7 +2,7 @@
 
     require_once("./includes/header.php");
 
-    if(!isset($_GET["id"])){
+    if (!isset($_GET["id"])) {
         ErrorMessage::show("ERROR: No ID passed into page.");
     }
     $entityId = $_GET["id"];

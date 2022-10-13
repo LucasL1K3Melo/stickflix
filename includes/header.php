@@ -11,9 +11,9 @@
     require_once("./includes/classes/Video.php");
 
 
-    // Verify if the user have an account and is logged 
+    // Verify if the user have an account and is logged
     //      if false, return to the register page.
-    if(!isset($_SESSION["userLoggedIn"])){
+    if (!isset($_SESSION["userLoggedIn"])) {
         header("Location: register.php");
     }
 
