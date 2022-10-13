@@ -17,7 +17,6 @@ class Video {
         } else {
 
             $query = $this->con->prepare("SELECT * FROM entities WHERE id=:id");
-            print_r($this->conn->errorInfo());
             $query->bindValue(":id", $input);
             $query->execute();
 
