@@ -3,7 +3,7 @@
 class Video {
 
     private $con;
-    private $sqlData;
+    private $sqlData; 
     private $entity;
 
     public function __construct($con, $input)
@@ -16,7 +16,7 @@ class Video {
         
         } else {
 
-            $query = $this->con->prepare("SELECT * FROM entities WHERE id=:id");
+            $query = $this->con->prepare("SELECT * FROM videos WHERE id=:id");
             $query->bindValue(":id", $input);
             $query->execute();
 
@@ -60,7 +60,6 @@ class Video {
     {
         $query = $this->con->prepare("UPDATE videos SET views=views+1 WHERE id=:id");
         $query->bindValue(":id", $this->getId());
-        //print_r($this->con->errorInfo());
         $query->execute();
     }
 
