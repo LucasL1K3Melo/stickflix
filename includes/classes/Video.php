@@ -56,6 +56,16 @@ class Video {
         return $this->sqlData["episode"];
     }
 
+    public function getEntityId()
+    {
+        return $this->sqlData["entityId"];
+    }
+
+    public function getSeasonNumber()
+    {
+        return $this->sqlData["season"];
+    }
+
     public function incrementViews()
     {
         $query = $this->con->prepare("UPDATE videos SET views=views+1 WHERE id=:id");
